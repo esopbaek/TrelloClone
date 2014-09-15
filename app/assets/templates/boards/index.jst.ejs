@@ -1,0 +1,25 @@
+<h2>Boards</h2>
+
+<div class="list-form"></div>
+
+<ul>
+<% boards.each(function(board) { %>
+	<a href="#boards/<%= board.id %>">
+	<li class=board>
+		<div><%= board.escape("title") %></div>
+	</li>
+	</a>
+<% }); %>
+</ul>
+
+<style>
+
+li.board {
+	list-style: none;
+	float:left;
+	border: 1px solid black;
+	margin: 10px;
+	padding: 30px;
+	font: lightblue;
+	background: grey;
+}

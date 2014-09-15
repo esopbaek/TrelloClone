@@ -1,0 +1,35 @@
+<h2><%= board.get("title") %></h2>
+	
+<ul class="clearfix">
+	<% board.lists().each(function(list) { %>
+		<div class="list-container">
+		<li class="list-show clearfix"><div class="list-item"><%= list.get("title") %></div>
+		<div class="new-card"></div>
+		</li>
+	<% }) %>
+</ul>
+
+<div class="add-list"></div>
+
+<style>
+
+li.list-show {
+	list-style: none;
+	float: left;
+}
+
+div.list-item {
+	border: 1px solid black;
+	padding: 10px;
+	margin: 20px;
+}
+
+div.new-card {
+	border: 1px solid green;
+}
+
+div.add-list {
+	
+}
+
+</style>
