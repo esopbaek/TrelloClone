@@ -4,17 +4,17 @@
 
 <ul>
 <% boards.each(function(board) { %>
-	<a href="#boards/<%= board.id %>">
 	<li class=board>
-		<div><%= board.escape("title") %></div>
+		<button data-board_id="<%= board.id %>">X</button>
+		<a href="#boards/<%= board.id %>"><div><%= board.escape("title") %></div></a>
 	</li>
-	</a>
 <% }); %>
 </ul>
 
 <style>
 
 li.board {
+	position: relative;
 	list-style: none;
 	float:left;
 	border: 1px solid black;
@@ -22,4 +22,12 @@ li.board {
 	padding: 30px;
 	font: lightblue;
 	background: grey;
+	z-index: 1;
+}
+
+button {
+	position: absolute;
+	top: 2px;
+	right: 2px;
+	z-index: 2;
 }

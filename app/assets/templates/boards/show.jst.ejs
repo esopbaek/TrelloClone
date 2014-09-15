@@ -2,10 +2,13 @@
 	
 <ul class="clearfix">
 	<% board.lists().each(function(list) { %>
-		<div class="list-container">
-		<li class="list-show clearfix"><div class="list-item"><%= list.get("title") %></div>
-		<div class="new-card"></div>
-		</li>
+		<div class="list-container clearfix">
+			<button class="destroy" data-list-id=<%= list.id %>>X</button>
+			<li class="list-show clearfix"><div class="list-item"><%= list.get("title") %></div>
+			<div class="new-card">Add Card...</div>
+		
+			</li>
+		</div>
 	<% }) %>
 </ul>
 
@@ -13,9 +16,21 @@
 
 <style>
 
+div.list-container {
+	position: relative;
+	border: 1px solid red;
+	float: left;
+	margin: 10px;
+}
+
+div.list-container button {
+	position: absolute;
+	right: 2px;
+	top: 2px;
+}
+
 li.list-show {
 	list-style: none;
-	float: left;
 }
 
 div.list-item {
@@ -26,10 +41,14 @@ div.list-item {
 
 div.new-card {
 	border: 1px solid green;
+	display: block;
+	margin: 0 auto;
+/*	position: absolute;*/
+/*	bottom: 2px;*/
 }
 
 div.add-list {
-	
+
 }
 
 </style>

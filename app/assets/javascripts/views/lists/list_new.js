@@ -1,7 +1,9 @@
 TrelloClone.Views.ListNew = Backbone.View.extend({
 	template: JST["lists/new"],
 	render: function() {
-		var renderedContent = this.template();
+		var renderedContent = this.template({
+			lists: this.collection
+		});
 		this.$el.html(renderedContent);
 		return this;
 	},
@@ -12,6 +14,6 @@ TrelloClone.Views.ListNew = Backbone.View.extend({
 	submit: function(event) {
 		event.preventDefault();
 		var params = $(event.currentTarget).serializeJSON()["list"];
-		this.collection.create(params)
+		this.collection.create(params);
 	}
-})
+});
