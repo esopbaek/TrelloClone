@@ -1,17 +1,17 @@
 <h1>Sign In</h1>
 
-<form class="sign-in" action="/session" method="post">
+<form class="sign-in group" action="/session" method="post">
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
   <label>Email<br>
-    <input name="user[email]" type="text"><br>
+    <input id="username" name="user[email]" type="text"><br>
   </label><br>
   <label>Password<br>
-    <input name="user[password]" type="password"><br>
+    <input id="user-password" name="user[password]" type="password"><br>
   </label><br>
   <input type="submit" value="Submit" class="btn btn-primary"><br>
 </form>
 
-
+<button class="demo">DEMO USER</button>
 
 <style>
 
@@ -19,4 +19,22 @@ form.sign-in, h1 {
 	text-align: center;
 }
 
+button {
+	display: block;
+	margin: 20px auto;
+	border: 2px solid black;
+	text-align: center;
+}
+
 </style>
+
+<script>
+
+$( document ).ready(function() {
+    $("button.demo").on("click", function() {
+		$("input#username").val("ripe@gmail.com");
+    	$("input#user-password").val("password");
+    })
+});
+
+</script>

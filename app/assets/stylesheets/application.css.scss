@@ -55,7 +55,7 @@ a.links {
 	color: #3385FF;
 }
 
-button {
+button.destroy-card, button.destroy-list, button.destroy-board {
 	position: absolute;
 	top: 2px;
 	right: 2px;
