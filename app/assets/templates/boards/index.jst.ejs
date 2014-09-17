@@ -1,33 +1,12 @@
 <h2>Boards</h2>
 
-<div class="list-form"></div>
-
-<ul>
+<ul class="clearfix">
 <% boards.each(function(board) { %>
 	<li class=board>
-		<button data-board_id="<%= board.id %>">X</button>
-		<a href="#boards/<%= board.id %>"><div><%= board.escape("title") %></div></a>
+		<button class="destroy-board" data-board_id="<%= board.id %>">X</button>
+		<a class="links" href="#boards/<%= board.id %>"><div><%= board.escape("title") %></div></a>
 	</li>
 <% }); %>
 </ul>
 
-<style>
-
-li.board {
-	position: relative;
-	list-style: none;
-	float:left;
-	border: 1px solid black;
-	margin: 10px;
-	padding: 30px;
-	font: lightblue;
-	background: grey;
-	z-index: 1;
-}
-
-button {
-	position: absolute;
-	top: 2px;
-	right: 2px;
-	z-index: 2;
-}
+<div class="list-form"></div>

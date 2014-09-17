@@ -17,4 +17,47 @@
 @import "font-awesome";
 
 body {
+	background: #3399FF
+}
+
+/* BOARDS INDEX PAGE */
+
+h2 {
+	text-align: center;
+}
+
+div.list-form {
+	display: block;
+	width: 200px;
+	padding: 40px;
+}
+
+button.destroy-board {
+	-webkit-appearance:none;
+	background: lightgrey;
+	border: none;
+}
+
+li.board {
+	position: relative;
+	list-style: none;
+	float:left;
+	border: 1px solid lightgrey;
+	border-radius: 10px;
+	margin: 10px;
+	padding: 30px;
+	font: lightblue;
+	background: lightgrey;
+	z-index: 1;
+}
+
+a.links {
+	color: #3385FF;
+}
+
+button {
+	position: absolute;
+	top: 2px;
+	right: 2px;
+	z-index: 2;
 }

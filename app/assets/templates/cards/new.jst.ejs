@@ -1,0 +1,40 @@
+<form id="new-card">
+	Card Title: <br><input type="text" name="card[title]"><br>
+	Card Rank: <br><input type="number" name="card[ord]"><br>
+	Card Description: <br><textarea name="card[description]"></textarea><br>
+	<input type="hidden" name="card[list_id]" value=<%= cards.list.id %>>
+	<input type="submit" value="Add Card!">
+	<div class="open">X</div>
+</form>
+
+<style>
+
+form > div {
+	position: absolute;
+	right: 2px;
+	bottom: 2px;
+	z-index: 100;
+	color: black;
+}
+
+form {
+	color: black;
+}
+
+form > input[type="submit"] {
+	-webkit-appearance: none;
+	border: 1px solid grey;
+	background: white;
+	border-radius: 5px;
+}
+
+form > input[type="submit"]:hover {
+	color: red;
+}
+
+form > input[type="submit"]:active {
+	box-shadow: 5px 2px 3px;
+}
+
+
+</style>

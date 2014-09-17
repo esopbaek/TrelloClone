@@ -1,6 +1,6 @@
 module Api
   class CardsController < ApiController
-    before_action :require_board_member!
+    # before_action :require_board_member!
 
     def create
       @card = current_list.cards.new(card_params)
@@ -21,6 +21,23 @@ module Api
                status: :unprocessable_entity
       end
     end
+    
+    def destroy
+      @card = Card.find(params[:id])
+      @card.destroy
+      render json: {}
+    end
+    
+    def swap_ranks
+      cards = params[:card].map do |id|
+        Card.find(id)
+      end
+      
+      cards.first.ord, cards.last.ord = cards.last.ord, cards.first.ord
+      cards.each(&:save)
+      
+      render json: cards
+    end
 
     private
 
@@ -32,13 +49,13 @@ module Api
         @list = List.find(params[:card][:list_id])
       end
     end
-
+ 
     def current_board
       current_list.board
     end
 
     def card_params
-      params.require(:card).permit(:title, :list_id, :ord)
+      params.require(:card).permit(:title, :list_id, :ord, :description)
     end
   end
 end

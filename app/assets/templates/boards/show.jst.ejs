@@ -2,53 +2,114 @@
 	
 <ul class="clearfix">
 	<% board.lists().each(function(list) { %>
-		<div class="list-container clearfix">
-			<button class="destroy" data-list-id=<%= list.id %>>X</button>
-			<li class="list-show clearfix"><div class="list-item"><%= list.get("title") %></div>
-			<div class="new-card">Add Card...</div>
-		
+		<div id="list_<%= list.id %>" class="list-container clearfix">
+			<button class="destroy-list" data-list-id=<%= list.id %>>X</button>
+			<li class="list-show clearfix"><div class="list-item"><h4><%= list.get("title") %></h4></div>
+			
+			<ul class="card-list connectedSortable">
+			<% list.cards().each(function(card) { %>
+					<li id="card_<%= card.id %>">
+						<div class='card-container' data-list-id=<%= list.id %>>
+							<button class="destroy-card" data-card-id=<%= card.id %>>X</button>
+							<h4><%= card.get("title") %></h4>
+							<i><%= card.get("description") %></i>
+						</div>
+					</li>
+			<% }) %>
+			</ul>
+			
+			<div class="new-card closed" data-list-id=<%= list.id %>>
+				<p>Add Card...</p>
+			</div>
 			</li>
 		</div>
 	<% }) %>
 </ul>
 
 <div class="add-list"></div>
+<div id="back"><a class="back" href="/"><p>BACK TO BOARDS</p></a></div>
 
 <style>
 
-div.list-container {
-	position: relative;
-	border: 1px solid red;
-	float: left;
-	margin: 10px;
+ul, button, div, li, input {
+	margin: 0;
+	padding: 0;
 }
 
-div.list-container button {
+ul.clearfix {
+	margin-left: 80px;
+}
+
+div.list-container {
+	position: relative;
+	float: left;
+	margin: 10px;
+	border-radius: 10px;
+	border: 1px solid grey;
+	background: #B2B2B2;
+}
+
+div.list-container > button, div.card-container > button {
 	position: absolute;
 	right: 2px;
 	top: 2px;
+	-webkit-appearance: none;
+	border: none;
+	background: inherit;
 }
 
-li.list-show {
+
+li {
 	list-style: none;
 }
 
+div#back {
+	margin: 0 20px;
+}
+
+a.back {
+	color: white;
+}
+
 div.list-item {
-	border: 1px solid black;
 	padding: 10px;
-	margin: 20px;
+
+}
+
+div.card-container {
+	position: relative;
+	border-radius: 5px;
+	padding: 10px;
+	margin: 10px 20px;
+	background: white;
 }
 
 div.new-card {
-	border: 1px solid green;
+	background: white;
 	display: block;
 	margin: 0 auto;
-/*	position: absolute;*/
-/*	bottom: 2px;*/
+	position: relative;
+	border-radius: 5px;
+	padding: 5px;
+	margin: 20px;
+	color: #33ADFF;
 }
+
+div.new-card p:hover {
+	cursor: pointer;
+}
+
 
 div.add-list {
-
+	border: 1px solid #B2B2B2;
+	border-radius: 5px;
+	margin: 20px;
+	width: 200px;
 }
+
+div.add-list form, div.add-list h4 {
+	padding: 10px;
+}
+
 
 </style>

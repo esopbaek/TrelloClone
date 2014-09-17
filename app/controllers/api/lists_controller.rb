@@ -1,6 +1,11 @@
 module Api
   class ListsController < ApiController
-    before_action :require_board_member!
+    # before_action :require_board_member!
+
+    def index
+      @lists = current_board.lists
+      render json: @lists
+    end
 
     def create
       @list = current_board.lists.new(list_params)
@@ -26,6 +31,17 @@ module Api
       else
         render json: @list.errors.full_messages, status: :unprocessable_entity
       end
+    end
+
+    def swap_ranks
+      lists = params[:list].map do |id|
+        List.find(id)
+      end
+      
+      lists.first.ord, lists.last.ord = lists.last.ord, lists.first.ord
+      lists.each(&:save)
+      
+      head :ok
     end
 
     private
