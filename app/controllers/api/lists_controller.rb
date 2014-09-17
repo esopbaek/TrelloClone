@@ -16,7 +16,7 @@ module Api
         render json: @list.errors.full_messages, status: :unprocessable_entity
       end
     end
-
+    
     def destroy
       @list = List.find(params[:id])
       @list.destroy
